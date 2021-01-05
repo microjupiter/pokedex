@@ -53,6 +53,11 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  post '/delete/:user_id' do
+    Trainer.destroy(params[:user_id])
+    redirect '/'
+  end
+
   helpers do
     def current_user
       @current_user ||= Trainer.find_by_id(session[:user_id])
@@ -61,6 +66,11 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       current_user != nil
     end
+
+    # def destroy
+    #   @current_user = Trainer.find(params[:id]).destroy
+    #   session[:user_id] = nil
+    # end
   end
 
 end

@@ -6,7 +6,16 @@
 
 
 
-
+<h3><label for="logout">Logout</label></h3><br>
 <form action="/logout" method="POST">
-<input type="submit" value="Logout">
+<input type="submit" value="Get Me Outta Here">
+</form>
+<br>
+
+
+
+<h3><label for="delete">Would you like to end your Pokemon Journey</label></h3><br>
+<form action="/delete/<%= @trainer.id %>" method="POST">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete Yoself">
 </form>
