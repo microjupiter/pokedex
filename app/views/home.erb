@@ -2,6 +2,16 @@
 
 <h1>Please choose a starter pokemon</h1>  
 
+<h2>Pokemon in Pokedex</h2>
+<h3>  
+  <ul>
+    <% Pokemon.all.each.with_index(1) do |pokemon, index|%>
+      <%=  "#{index}. #{pokemon["name"].capitalize}"  %>
+      <img src="<%= pokemon[:sprite] %>" alt="" > <br>
+    <%end%>
+  </ul>
+</h3>
+
 
 
 

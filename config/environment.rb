@@ -15,4 +15,7 @@ require 'net/http'
 require 'open-uri'
 require 'json'
 
+configure :development do
+  set :database, 'sqlite3:db/development.sqlite'
+end
 
