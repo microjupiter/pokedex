@@ -15,13 +15,11 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/signup" do 
-   
-    @trainer = Trainer.new(username: params["username"], password: params["password"])
-    if @trainer.save
+    @trainer = Trainer.create(username: params["username"], password: params["password"])
+    session[:user_id] = @trainer.id
     redirect '/home'
-    else
-      redirect '/'
   end
+
 
   post '/login' do 
     trainer = Trainer.find_by(:username => params[:username])
@@ -30,22 +28,23 @@ class ApplicationController < Sinatra::Base
     redirect '/home'
   else
     redirect '/'
+    end
   end
-  end
-end
 
-post '/logout' do
-  session.clear
-  redirect '/'
+
+  post '/logout' do
+    session.clear
+    redirect '/'
+  end
 
 
   get '/login' do
-    @trainer = Trainer.find_by_id(session[:user_id])
-    erb :home
+      @trainer = Trainer.find_by_id(session[:user_id])
+      erb :home
   end
 
   get '/home' do
-    
+      
     @trainer = Trainer.find_by_id(session[:user_id])
     if logged_in?
     erb :home
