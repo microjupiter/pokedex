@@ -10,6 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    Api.new.pokemon_creator
     erb :welcome
   end
 
@@ -21,6 +22,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/home' do
+    
     @trainer = Trainer.find_by_id(session[:user_id])
     if logged_in?
     erb :home
