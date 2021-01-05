@@ -14,6 +14,7 @@ gem 'tux'
 gem 'json'
 gem 'rest-client'
 gem 'excon'
+gem 'poke-api-v2'
 
 group :test do
   gem 'rspec'
