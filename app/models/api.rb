@@ -1,7 +1,7 @@
 class Api
 
   def pokemon_creator
-    url = "https://pokeapi.co/api/v2/pokemon?limit=151"
+    url = "https://pokeapi.co/api/v2/pokemon?limit=10"
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
     response.body
@@ -15,7 +15,7 @@ class Api
       responses = Net::HTTP.get_response(poke_uri)
       responses.body
       pokemon_data = JSON.parse(responses.body)
-      Pokemon.create(name: pokemon_data["name"]) 
+      Pokemon.create(name: pokemon_data["name"], pokemon_type: pokemon_data["types"][0]["type"]["name"], height: pokemon_data["height"], sprite: pokemon_data["sprites"]["front_default"])
     end
   end
 end
