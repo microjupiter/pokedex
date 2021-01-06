@@ -1,0 +1,28 @@
+<div align="center">
+<h1> Welcome home <%= @trainer.username %></h1>
+<img src="https://static.giantbomb.com/uploads/scale_super/0/1481/2897229-9939923796-latest" alt="image" height="150" width = "400"
+class="center"><br>
+<div>
+
+
+<h2>Pokemon in Pokedex</h2>
+<h3>  
+<form action="/pokemon/new" method="POST">
+  <ul>
+    <% Pokemon.all.each.with_index(1) do |pokemon, index|%>
+      <li><span><%=  "#{index}. #{pokemon["name"].capitalize}" %>
+        Capture Me <input type="checkbox" value="<%=pokemon.id%>" name="pokemon_trainer[:pokemon][]">
+        <img src="<%= pokemon[:sprite] %>" alt="" align="center" ></span></li>
+      <%end%>
+  </ul>
+  <input type="submit" value="capture">
+  </form>
+</h3>
+
+<form action="/logout" method="POST">
+  <input type="submit" value="logout">
+</form> <br>
+<form action="/delete/<%= @trainer.id %>" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete user">
+</form>
