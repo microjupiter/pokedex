@@ -70,10 +70,7 @@ class ApplicationController < Sinatra::Base
       current_user != nil
     end
 
-    # def destroy
-    #   @current_user = Trainer.find(params[:id]).destroy
-    #   session[:user_id] = nil
-    # end
+    
   end
 
 end
