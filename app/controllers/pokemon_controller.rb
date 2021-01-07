@@ -7,8 +7,9 @@ get "/" do
 end
 
 post '/pokemon/new' do
-  binding.pry
-  
+  @pokemon = Pokemon.find_by_id(params['pokemon'])
+  @trainer = current_user
+  @pokemon_trainer = PokemonTrainer.create(pokemon_id: @pokemon.id, trainer_id: @trainer.id)
   erb :'pokemon/show'
 end
 
