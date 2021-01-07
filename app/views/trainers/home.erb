@@ -6,17 +6,17 @@ class="center"><br>
 
 
 <h2>Pokemon in Pokedex</h2>
-<h3>  
-<form action="/pokemon/new" method="POST">
+<h3>
   <ul>
     <% Pokemon.all.each.with_index(1) do |pokemon, index|%>
-      <li><span><%=  "#{index}. #{pokemon["name"].capitalize}" %>
-        Capture Me <input type="checkbox" value="<%=pokemon.id%>" name="pokemon_trainer[:pokemon][]">
-        <img src="<%= pokemon[:sprite] %>" alt="" align="center" ></span></li>
+      <form action="/pokemon/new" method="POST">
+      <%=  "#{index}. #{pokemon["name"].capitalize}" %>
+        <img src="<%= pokemon[:sprite] %>" alt="" align="center" >
+        <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
+        <input type="submit" value="Capture me">
+        </form>
       <%end%>
   </ul>
-  <input type="submit" value="capture">
-  </form>
 </h3>
 
 <form action="/logout" method="POST">
