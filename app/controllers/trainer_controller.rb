@@ -45,6 +45,14 @@ get '/show' do
   erb :'pokemons/show'
 end
 
+post '/show' do
+  redirect '/show'
+end
+
+post '/home' do
+  redirect '/home'
+end
+
 post '/delete/:user_id' do
   Trainer.destroy(params[:user_id])
   redirect '/'
