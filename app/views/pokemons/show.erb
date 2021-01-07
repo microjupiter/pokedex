@@ -11,6 +11,7 @@
       <%="Type: #{pokemon.pokemon_type.capitalize}"%> <br> <br>
       <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
       <input type="submit" value="Release me" style="background-color:red"> <br>
+      <br>
     </form>
     <form action="/pokemon_trainer/<%= pokemon_trainer.id%>/edit" method="POST">
         <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
