@@ -1,8 +1,8 @@
 class PokemonTrainerController < ApplicationController
-  post '/pokemon_trainer/:id' do 
+  delete '/pokemon_trainer/:id' do 
     @pokemon_trainer = PokemonTrainer.find_by(trainer_id: current_user.id, pokemon_id: params["pokemon"])
     @pokemon_trainer.destroy
-    redirect '/show'
+    redirect '/pokemons'
   end 
 
   post '/pokemon_trainer/:id/edit' do
@@ -13,5 +13,11 @@ class PokemonTrainerController < ApplicationController
     
     redirect '/show'
   end
+
+  # private
+  # def nickname_params
+  #   @nickname = params["name"]
+  #   params.require("name")
+  # end
 
 end

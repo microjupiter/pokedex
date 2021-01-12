@@ -10,12 +10,13 @@
       <%="Height: #{pokemon.height}"%> <br>
       <%="Type: #{pokemon.pokemon_type.capitalize}"%> <br> <br>
       <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
+      <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Release me" style="background-color:red"> <br>
       <br>
     </form>
     <form action="/pokemon_trainer/<%= pokemon_trainer.id%>/edit" method="POST">
         <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
-        <input type="text" placeholder="Nickname" name="name" id="name"> 
+        <input type="text" placeholder="Nickname" name="name" id="name" required> 
         <input type="submit" value="Rename" ">
     </form>
     
@@ -23,7 +24,7 @@
   <%end%>
 <%end%>
 
-<form action="/home" method="post">
+<form action="/pokemons" method="post">
 <input type="submit" value="Go Catch Some More">
 
 </form>

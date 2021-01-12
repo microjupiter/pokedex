@@ -4,7 +4,7 @@
 class="center"><br>
 <div>
 
-<%# Shows the cureent users currently captured pokemon %>
+<%# shows the current trainers currently captured pokemon %>
 <h2>Pokemon in Pokedex</h2>
 <h3>Captured Pokemon</h3>
 <%PokemonTrainer.all.each do |pokemon_trainer|%>
@@ -33,12 +33,13 @@ class="center"><br>
             <img src="<%= pokemon[:sprite] %>" alt="" align="center" >
           
             <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
+            <input type="hidden" name="_method" value="delete">
             <input type="submit" value="Release me" style="background-color:red">
           </form> 
         <%else%>
 
 
-          <form action="/pokemon/new" method="POST">
+        <form action="/pokemon/new" method="POST">
             <%=  "#{index}. #{pokemon["name"].capitalize}" %>
             <img src="<%= pokemon[:sprite] %>" alt="" align="center" >
             <input type="hidden" value="<%=pokemon.id%>" name="pokemon">

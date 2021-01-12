@@ -19,8 +19,5 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       current_user != nil
     end
-
-    
   end
-
 end
