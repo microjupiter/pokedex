@@ -5,6 +5,7 @@ class PokemonTrainerController < ApplicationController
     redirect '/pokemons'
   end 
 
+  # allows for user to edit pokemon nickname and reload captured pokemon page
   patch '/pokemon_trainer/:id/edit' do
     @pokemon_trainer = PokemonTrainer.find_by(trainer_id: current_user.id, pokemon_id: params["pokemon"])
     

@@ -1,12 +1,16 @@
 <div align="center">
-<h1> Welcome home <%= @trainer.username %></h1>
+<h1> Welcome home <%= @trainer.username.capitalize %></h1>
 <img src="https://static.giantbomb.com/uploads/scale_super/0/1481/2897229-9939923796-latest" alt="image" height="150" width = "400"
 class="center"><br>
 <div>
 
 <%# shows the current trainers currently captured pokemon %>
-<h2>Pokemon in Pokedex</h2>
-<h3>Captured Pokemon</h3>
+<h2>POKEMON IN POKEDEX</h2>
+<p><h5>This Pokedex provided by Professor Oak for the use soley by <%= @trainer.username.capitalize %></h5></p>
+<h3>This is the Pokedex, you can browse, capture and relase any of the original 151 Pokemon</h3>
+<h2>CAPTURED POKEMON</h2>
+<br>
+<h4>Here you can see a quick list of your currently captured Pokemon</h4><br>
 <%PokemonTrainer.all.each do |pokemon_trainer|%>
   <%if pokemon_trainer.trainer_id == current_user.id%>
     <%pokemon = Pokemon.find_by_id(pokemon_trainer.pokemon_id)%>

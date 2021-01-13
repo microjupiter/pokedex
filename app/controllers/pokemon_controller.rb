@@ -15,6 +15,7 @@ post '/pokemon/new' do
   redirect '/pokemons'
 end
 
+# lets a user browse for pokemon by directly typing thier ID w/ RESTful routing
 get '/pokemons/:id' do
   @pokemon = Pokemon.find_by_id(params[:id])
   erb :'/pokemons/edit'
