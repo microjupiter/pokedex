@@ -14,4 +14,10 @@ post '/pokemon/new' do
   @pokemon.trainer_id = @pokemon_trainer.trainer_id
   redirect '/pokemons'
 end
+
+get '/pokemons/:id' do
+  @pokemon = Pokemon.find_by_id(params[:id])
+  erb :'/pokemons/edit'
+end
+
 end

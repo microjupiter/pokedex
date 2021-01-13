@@ -57,6 +57,35 @@ post '/pokemons' do
   redirect '/pokemons'
 end
 
+post '/trainer' do
+  @trainer = Trainer.find_by_id(session[:user_id])
+  if logged_in?
+  erb :'trainers/edit'
+  else
+  redirect '/'
+  end
+end
+
+get '/trainer' do
+  erb :'/trainers/edit'
+end
+
+patch '/trainer/edit' do
+  @trainer = Trainer.find_by_id(session[:user_id])
+  @trainer.hometown = params["hometown"]
+  @trainer.age = params["age"]
+  @trainer.save
+  if logged_in?
+    erb :'trainers/edit'
+    else
+    redirect '/'
+    end
+end
+
+get '/trainers/edit' do
+  erb :'/trainers/edit'
+end
+
 # deletes trainer based on their id. redirects to welcome screen
 delete '/delete/:user_id' do
   Trainer.destroy(params[:user_id])

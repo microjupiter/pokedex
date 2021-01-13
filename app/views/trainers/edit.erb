@@ -1,0 +1,31 @@
+<h1><%= @trainer.username.capitalize %> </h1>
+<h2><label>Hometown:</label></h2>
+<h2><%= @trainer.hometown.capitalize %></h2> <br>
+<h2><label>Age:</label></h2>
+<h2><%= @trainer.age %></h2>
+
+<form action="/trainer/edit" method="POST">
+    <input type="hidden" name="_method" value="patch">
+        
+        <input type="text" placeholder="Hometown" name="hometown" id="hometown" required> 
+        <br>
+        <input type="number" placeholder="Age" name="age" id="age" required> 
+        <br>
+        <br>
+        <input type="submit" value="Edit" ">
+    </form>
+<br>
+<form action="/pokemons" method="post">
+  <input type="submit" value="Go Catch Some More">
+<br>
+<br></form>
+<form action="/logout" method="POST">
+  <input type="submit" value="logout">
+</form>
+<br>
+<form action="/delete/<%= @trainer.id %>" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete user">
+</form>
+
+</form>
