@@ -9,7 +9,6 @@ ActiveRecord::Base.establish_connection(
 )
 
 require './app/controllers/application_controller'
-require './app/controllers/pokedex_controller'
 require './app/controllers/pokemon_controller'
 require './app/controllers/trainer_controller'
 require_all 'app'
@@ -17,6 +16,7 @@ require_relative '../app/models/api.rb'
 require 'net/http'
 require 'open-uri'
 require 'json'
+require 'awesome_print'
 
 configure :development do
   set :database, 'sqlite3:db/development.sqlite'

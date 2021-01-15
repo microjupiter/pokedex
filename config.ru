@@ -8,5 +8,4 @@ use Rack::MethodOverride
 use PokemonTrainerController
 use PokemonController
 use TrainerController
-use PokedexController
 run ApplicationController

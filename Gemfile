@@ -15,6 +15,7 @@ gem 'json'
 gem 'rest-client'
 gem 'excon'
 gem 'poke-api-v2'
+gem 'awesome_print'
 
 group :test do
   gem 'rspec'

@@ -58,28 +58,40 @@ post '/pokemons' do
 end
 
 # finds the user by their ID, verifies they're logged in and brings them to a page to edit their own info
-post '/trainer' do
+# post '/trainers' do
+#   @trainer = Trainer.find_by_id(session[:user_id])
+#   if logged_in?
+#   erb :'trainers/edit'
+#   else
+#   redirect '/'
+#   end
+# end
+get '/trainers/:id' do
   @trainer = Trainer.find_by_id(session[:user_id])
   if logged_in?
-  erb :'trainers/edit'
+  redirect :'/trainers/edit'
   else
   redirect '/'
   end
 end
 
-
-get '/trainer' do
+get '/trainers/:id/edit' do
+  @trainer = Trainer.find_by_id(session[:user_id])
+  if logged_in?
   erb :'/trainers/edit'
+  else
+  redirect '/'
+  end
 end
 
 # allows user to edit their basic info and reload their trainer info page if they're logged in. 
-patch '/trainer/edit' do
+patch '/trainers/edit' do
   @trainer = Trainer.find_by_id(session[:user_id])
   @trainer.hometown = params["hometown"]
   @trainer.age = params["age"]
   @trainer.save
   if logged_in?
-    erb :'trainers/edit'
+    redirect '/trainers/:id/edit'
   else
     redirect '/'
   end
