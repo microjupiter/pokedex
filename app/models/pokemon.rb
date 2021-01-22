@@ -1,6 +1,6 @@
 class Pokemon < ActiveRecord::Base
-  belongs_to :pokedexes
-  has_many :trainers, through: :pokemon_trainer
+  has_many :trainers, through: :pokemon_trainers
+  has_many :pokemon_trainers
 end
 
 

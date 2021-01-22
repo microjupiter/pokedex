@@ -2,19 +2,19 @@
 
 <%PokemonTrainer.all.each do |pokemon_trainer|%>
   <%if pokemon_trainer.trainer_id == current_user.id%>
-    <form action="/pokemon_trainer/<%= pokemon_trainer.id%>" method="POST">
+    <form action="/pokemon_trainers/<%= pokemon_trainer.id%>" method="POST">
       <%pokemon = Pokemon.find_by_id(pokemon_trainer.pokemon_id) %>
       <h2><%=  pokemon_trainer.nickname.capitalize %></h2>
       
       <img src="<%= pokemon[:sprite] %>" alt="" align="center" > <br>
       <%="Height: #{pokemon.height}"%> <br>
-      <%="Type: #{pokemon.pokemon_type.capitalize}"%> <br> <br>
+      Type: <%= pokemon.pokemon_type.capitalize %> <br> <br>
       <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Release me" style="background-color:red"> <br>
       <br>
     </form>
-    <form action="/pokemon_trainer/<%= pokemon_trainer.id%>/edit" method="POST">
+    <form action="/pokemon_trainers/<%= pokemon_trainer.id%>/edit" method="POST">
     <input type="hidden" name="_method" value="patch">
         <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
         <input type="text" placeholder="Nickname" name="name" id="name" required> 

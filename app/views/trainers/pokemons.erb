@@ -29,7 +29,7 @@ class="center"><br>
 <%# Shows all the orig. 151 pokemon %>
 <h3>
   <ul>
-    <% Pokemon.all.each.with_index(1) do |pokemon, index|%>
+    <% Pokemon.all.each.with_index(1) do |pokemon, index| %>
       <%if @pokemon_trainer = PokemonTrainer.find_by(trainer_id: current_user.id, pokemon_id: pokemon.id)%>
           <form action="/pokemon_trainers/<%= @pokemon_trainer.id%> " method="POST">
             <%=  "#{index}. #{pokemon["name"].capitalize}" %>
@@ -61,5 +61,3 @@ class="center"><br>
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="delete user">
 </form>
-
-

@@ -1,0 +1,11 @@
+conditional logic to pokemon_trainer controller to make sure user is logged in
+move all logic out of views other than restricting access to buttons (hide login/log out links)
+deadline EOD friday
+email or slack to send to jennifer
+
+
+
+
+
+if the user is logged in capture buttons will show
+if the user is logged in AND has captured pokemon, the release button will show

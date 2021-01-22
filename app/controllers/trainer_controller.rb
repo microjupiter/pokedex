@@ -2,11 +2,15 @@ require './config/environment'
 
 class TrainerController < ApplicationController
 
-  # creates a new trainer and assigns them a session w/ their user id. redirects user to their unique homepage to capture/release pokemon
+  # creates a new trainer and assigns them a session w/ their user id. redirects user to their unique homepage to capture/release pokemon. hits the /pokemons get request to check for if trainer is logged in via helper method and then loads the correct view
 post "/signup" do 
   @trainer = Trainer.create(username: params["username"], password: params["password"])
-  session[:user_id] = @trainer.id
-  redirect '/pokemons'
+  if @trainer.valid?
+    session[:user_id] = @trainer.id
+    redirect '/pokemons'
+  else
+    redirect '/'
+  end
 end
 
 # checks if trainer logging in is already in the db and using the correct password. redirects to their unique homepage to capture/release, or back to welcome to try again
