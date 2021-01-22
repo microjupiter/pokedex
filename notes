@@ -9,3 +9,10 @@ email or slack to send to jennifer
 
 if the user is logged in capture buttons will show
 if the user is logged in AND has captured pokemon, the release button will show
+
+
+ <form action="/pokemon_trainers/<%= @pokemon_trainer.id%>" method="POST">
+            <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Release me" style="background-color:red">
+          </form>

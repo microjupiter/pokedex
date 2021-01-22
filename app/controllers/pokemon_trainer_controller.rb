@@ -20,7 +20,7 @@ end
   end
 end
 
-destroy '/pokemon_trainers/:id' do
+delete '/pokemon_trainers/:id' do
 if logged_in?
   @pokemon_trainer = PokemonTrainer.find_by(trainer_id: current_user.id, pokemon_id: params["pokemon"])
   @pokemon_trainer.destroy
